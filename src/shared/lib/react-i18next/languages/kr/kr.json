@@ -1,0 +1,11 @@
+{
+  "common":{
+    "validation":{
+        "required": "필수 입력 항목입니다.",
+        "minLen": "최소 {{minLen}}자 이상 입력해주세요.",
+        "maxLen": "최대 {{maxLen}}자 이내로 입력해주세요.",
+        "email": "이메일 형식이 아닙니다.",
+        "confirmPassword": "비밀번호가 일치하지 않습니다."
+    }
+  }
+}
