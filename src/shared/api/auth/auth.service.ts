@@ -21,9 +21,6 @@ export class AuthService {
       LoginUserDtoSchema,
       data.loginUserDto,
     );
-    console.log(
-      baseClient.getUri({ url: `${apiPathKeys.auth()}/api/auth/login` }),
-    );
     return baseClient
       .post(`${apiPathKeys.auth()}/api/auth/login`, { ...loginUserDto })
       .then(
