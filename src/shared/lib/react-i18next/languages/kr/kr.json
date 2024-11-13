@@ -13,6 +13,13 @@
     "description": "죄송합니다. 요청하신 페이지를 찾을 수 없습니다."
   },
   "button":{
-    "back": "뒤로가기"
+    "back": "뒤로가기",
+    "test": "테스트"
+  },
+  "login":{
+    "fields":{
+      "userId":"아이디",
+      "password":"비밀번호"
+    }
   }
 }

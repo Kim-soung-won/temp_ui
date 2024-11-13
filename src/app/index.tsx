@@ -1,3 +1,4 @@
+import { StrictMode } from "react";
 import axios, { AxiosError, AxiosHeaders } from "axios";
 import "@/shared/lib/react-i18next/i18n"; // import 해주지 않으면 경고가 발생한다.
 import ReactDOM from "react-dom/client";
@@ -132,4 +133,12 @@ baseClient.interceptors.response.use(
   },
 );
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<Provider />);
+// ReactDOM.createRoot(document.getElementById("root")!).render(<Provider />);/
+
+const root = ReactDOM.createRoot(document.getElementById("root")!);
+
+root.render(
+  <StrictMode>
+    <Provider />
+  </StrictMode>,
+);

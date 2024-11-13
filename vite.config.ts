@@ -33,6 +33,7 @@ export default ({ mode }) => {
     },
     // dev용
     server: {
+      port: 80,
       proxy: {
         "/sw": {
           target: process.env.VITE_BASE_SERVER_URL,

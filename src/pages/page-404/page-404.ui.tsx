@@ -2,10 +2,20 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { pathKeys } from "@/shared/lib/react-router";
+import { useSessionStore } from "@/shared/session";
 import ErrorImg from "@/assets/images/backgrounds/errorimg.svg";
 
 export function Page404() {
   const { t } = useTranslation();
+  const session = useSessionStore.use.session();
+
+  const test = () => {
+    console.log("token : ", session?.accessToken);
+    console.log("refreshToken : ", session?.refreshToken);
+    console.log("userId : ", session?.userId);
+    console.log("userName : ", session?.username);
+  };
+
   return (
     <Box
       display="flex"
@@ -41,6 +51,14 @@ export function Page404() {
           disableElevation
         >
           {t("button.back")}
+        </Button>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={test}
+          disableElevation
+        >
+          {t("button.test")}
         </Button>
       </Container>
     </Box>
