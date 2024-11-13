@@ -11,7 +11,7 @@ RUN npm i
 
 # Copy all source files and build the app
 COPY . .
-RUN npm run build
+RUN npm run build:prod
 
 # Stage 2: Serve the React app with nginx
 FROM nginx:latest
