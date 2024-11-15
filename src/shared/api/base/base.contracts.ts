@@ -1,15 +1,6 @@
 import { getI18n } from "react-i18next";
 import { z } from "zod";
 
-export const createValidationMessage = (key: string, options?: any): string => {
-  const result = getI18n().t(key, options);
-
-  if (typeof result === "string") {
-    return result;
-  }
-  return String(result);
-};
-
 export interface BaseDto {
   regId?: string | null;
   regDt?: string | null;

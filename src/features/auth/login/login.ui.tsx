@@ -25,7 +25,6 @@ export function Login({ title, subtext }: LoginProps) {
       const {
         data: { data },
       } = response;
-
       if (data == null) {
         return;
       }

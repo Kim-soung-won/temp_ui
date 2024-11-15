@@ -1,19 +1,31 @@
+import { useState } from "react";
 import { Box, Container, Typography, Button } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { useSnackbar } from "@/app/providers/SnackbarProvider";
 import { pathKeys } from "@/shared/lib/react-router";
 import { useSessionStore } from "@/shared/session";
+import { TestQueries } from "@/entities/core/test/test.queries";
 import ErrorImg from "@/assets/images/backgrounds/errorimg.svg";
 
 export function Page404() {
   const { t } = useTranslation();
+  const { showSnackbar } = useSnackbar();
+  const [num, setNum] = useState(0);
   const session = useSessionStore.use.session();
+
+  const { data } = useQuery(TestQueries.testQuery(num));
 
   const test = () => {
     console.log("token : ", session?.accessToken);
     console.log("refreshToken : ", session?.refreshToken);
     console.log("userId : ", session?.userId);
     console.log("userName : ", session?.username);
+    showSnackbar("hello", "success");
+
+    console.log(data);
+    setNum(num + 1);
   };
 
   return (
@@ -58,7 +70,7 @@ export function Page404() {
           onClick={test}
           disableElevation
         >
-          {t("button.test")}
+          useQuery 알람 테스트
         </Button>
       </Container>
     </Box>
