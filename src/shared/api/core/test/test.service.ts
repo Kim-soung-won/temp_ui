@@ -8,7 +8,7 @@ import { TestDtoSchema } from "./test.contracts";
 export class TestService {
   static testQuery(): Promise<AxiosResponse> {
     return baseClient
-      .get(`${apiPathKeys.core()}/api/no-auth/test`)
+      .get(`${apiPathKeys.core()}/api/auth/test`)
       .then(
         AxiosContracts.responseContract(
           baseContractsDto.BaseResponseDtoSchema(TestDtoSchema),

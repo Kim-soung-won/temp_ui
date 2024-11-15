@@ -81,6 +81,7 @@ baseClient.interceptors.response.use(
           })
           .then((resp) => {
             refreshTokenPromise = null;
+            console.log(resp);
             return resp;
           });
       }
@@ -88,7 +89,7 @@ baseClient.interceptors.response.use(
         .then(async (resp) => {
           const responseHeaders = resp.headers as AxiosHeaders;
           const newRefreshToken = responseHeaders[REFRESH_TOKEN_HEADER];
-          const accessToken = responseHeaders[ACCESS_TOKEN_HEADER];
+          const accessToken = responseHeaders.getAuthorization();
 
           if (accessToken && newRefreshToken) {
             const newSession: Session = {
@@ -102,7 +103,6 @@ baseClient.interceptors.response.use(
             config.headers.setAuthorization(responseHeaders.getAuthorization());
 
             refreshAttemptCount += 1;
-
             if (refreshAttemptCount >= 5) {
               // 토큰 재발급을 5회 시도했는데 실패한 경우
               resetSession();
@@ -126,7 +126,6 @@ baseClient.interceptors.response.use(
         });
     }
     if (!axios.isAxiosError(error)) {
-      console.log("hello");
       return Promise.reject(error);
     }
     return Promise.reject(handleGenericError(error));
